@@ -1,13 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const FilterContext = React.createContext('?')
+type ContextProps = {
+  filters: any
+  setFilters: any
+}
 
-type FilterProviderType = {
+export const FilterContext = React.createContext<Partial<ContextProps>>({})
+
+type LayoutProps = {
   children: React.ReactChild
 }
 
-const FilterProvider = ({ children }: FilterProviderType) => {
-  return <FilterContext.Provider value={'?'}>{children}</FilterContext.Provider>
+const FilterProvider = ({ children }: LayoutProps) => {
+  const [filters, setFilters] = useState({})
+
+  return (
+    <FilterContext.Provider
+      value={{
+        filters,
+        setFilters,
+      }}
+    >
+      {children}
+    </FilterContext.Provider>
+  )
 }
 
 export default FilterProvider

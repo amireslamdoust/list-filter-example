@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import LocaleTranslate from '../../services/LocaleTranslate'
+import { FilterContext } from '../../context/FilterContext'
 
 type GridTypes = {
   list: any
 }
 
 const GridList = ({ list }: GridTypes) => {
+  const { filters } = useContext(FilterContext)
+
+  console.log('grid', filters)
   return (
     <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {list.map((item: any) => {

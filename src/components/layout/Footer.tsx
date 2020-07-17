@@ -9,7 +9,7 @@ const Footer = () => {
           <div className="xl:col-span-1">
             <img
               className="h-10"
-              src="https://pbs.twimg.com/profile_images/1252626966836060162/qXAAYQYP_400x400.png"
+              src="https://adviqo.com/app/uploads/2019/04/adviqo_logo_rgb.jpg"
               alt="Company name"
             />
             <p className="mt-8 text-gray-500 text-base leading-6">CSS Powered by @tailwind</p>

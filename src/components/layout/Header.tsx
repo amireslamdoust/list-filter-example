@@ -22,7 +22,7 @@ const Header = () => {
                   <Link to="/" aria-label="Home">
                     <img
                       className="h-8 w-auto sm:h-10"
-                      src="https://pbs.twimg.com/profile_images/1252626966836060162/qXAAYQYP_400x400.png"
+                      src="https://adviqo.com/app/uploads/2019/04/adviqo_logo_rgb.jpg"
                       alt="Logo"
                     />
                   </Link>

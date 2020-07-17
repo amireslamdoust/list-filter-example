@@ -1,14 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import LocaleTranslate from '../../services/LocaleTranslate'
+import { FilterContext } from '../../context/FilterContext'
 
-type ListTypes = {
-  list: any
-}
-const StackedList = ({ list }: ListTypes) => {
+const StackedList = () => {
+  const { data } = useContext(FilterContext)
+
   return (
     <div className="bg-white shadow overflow-hidden sm:rounded-md">
       <ul>
-        {list.map((item: any) => {
+        {data.list.map((item: any) => {
           return (
             <li key={item.email} className="border-t border-gray-200 shadow">
               <div className="flex items-center px-4 py-4 sm:px-6">
@@ -41,7 +41,7 @@ const StackedList = ({ list }: ListTypes) => {
                     <div className="hidden md:block">
                       <div>
                         <div className="text-sm leading-5 text-gray-900">
-                          {item.locale.map((locale: any) => {
+                          {item.locale.map((locale: string) => {
                             return (
                               <div
                                 key={locale}

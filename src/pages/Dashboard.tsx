@@ -5,12 +5,9 @@ import Footer from '../components/layout/Footer'
 import GridList from '../components/lists/GridList'
 import StackedList from '../components/lists/StackedList'
 import Filter from '../components/filters/Filters'
-import useLists from '../hooks/useLists'
 import FilterProvider from '../context/FilterContext'
 
 const Dashboard = () => {
-  const { list } = useLists()
-
   const [filterView, setFilterView] = useState('grid')
 
   const handleChangeFilterView = (event: any) => {
@@ -37,13 +34,7 @@ const Dashboard = () => {
               <Filter />
             </div>
             <div className="w-full lg:w-3/4">
-              <div>
-                {filterView === 'grid' ? (
-                  <GridList list={list.list} />
-                ) : (
-                  <StackedList list={list.list} />
-                )}
-              </div>
+              <div>{filterView === 'grid' ? <GridList /> : <StackedList />}</div>
             </div>
           </div>
         </FilterProvider>

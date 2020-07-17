@@ -1,16 +1,7 @@
+import { locales } from '../config/locales'
+
 const LocaleTranslate = (locale: string) => {
-  switch (locale) {
-    case 'de':
-      return 'German'
-    case 'en':
-      return 'English'
-    case 'fr':
-      return 'France'
-    case 'it':
-      return 'Italy'
-    default:
-      return 'German'
-  }
+  return Object.values(locales)[Object.keys(locales).findIndex((l) => l === locale)]
 }
 
 export default LocaleTranslate

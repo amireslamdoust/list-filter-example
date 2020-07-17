@@ -2,17 +2,12 @@ import React, { useContext } from 'react'
 import LocaleTranslate from '../../services/LocaleTranslate'
 import { FilterContext } from '../../context/FilterContext'
 
-type GridTypes = {
-  list: any
-}
+const GridList = () => {
+  const { data } = useContext(FilterContext)
 
-const GridList = ({ list }: GridTypes) => {
-  const { filters } = useContext(FilterContext)
-
-  console.log('grid', filters)
   return (
     <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-      {list.map((item: any) => {
+      {data.list.map((item: any) => {
         return (
           <li
             key={item.email}
@@ -28,7 +23,7 @@ const GridList = ({ list }: GridTypes) => {
               <dl className="mt-1 flex-grow flex flex-col justify-between">
                 <dd className="text-gray-500 text-sm leading-5">{item.title}</dd>
                 <dd className="text-gray-500 text-sm ">
-                  {item.locale.map((locale: any) => {
+                  {item.locale.map((locale: string) => {
                     return (
                       <div
                         key={locale}

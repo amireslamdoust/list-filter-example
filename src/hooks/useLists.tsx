@@ -13,7 +13,6 @@ export default function useLists(q: string = '') {
     getList(q).then((res) => {
       setData(res)
     })
-    console.log('fetch')
   }, [q])
 
   return { data, setData }

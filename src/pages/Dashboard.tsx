@@ -6,6 +6,7 @@ import GridList from '../components/lists/GridList'
 import StackedList from '../components/lists/StackedList'
 import Filter from '../components/filters/Filters'
 import FilterProvider from '../context/FilterContext'
+import Pagination from '../components/pagination/Pagination'
 
 const Dashboard = () => {
   const [filterView, setFilterView] = useState('grid')
@@ -29,12 +30,17 @@ const Dashboard = () => {
           </div>
         </div>
         <FilterProvider>
-          <div className="flex flex-wrap w-full">
-            <div className="w-full lg:w-1/4">
-              <Filter />
+          <div>
+            <div className="flex flex-wrap w-full">
+              <div className="w-full lg:w-1/4">
+                <Filter />
+              </div>
+              <div className="w-full lg:w-3/4">
+                <div>{filterView === 'grid' ? <GridList /> : <StackedList />}</div>
+              </div>
             </div>
-            <div className="w-full lg:w-3/4">
-              <div>{filterView === 'grid' ? <GridList /> : <StackedList />}</div>
+            <div className="w-full">
+              <Pagination />
             </div>
           </div>
         </FilterProvider>

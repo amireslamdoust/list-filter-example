@@ -8,7 +8,7 @@ import RadioBox from '../inputs/CheckBox'
 const rates = ['0', '1', '2', '3', '4', '5']
 
 const Filter = () => {
-  const { filters, updateState } = useContext(FilterContext)
+  const { filters, updateFilters } = useContext(FilterContext)
 
   const handleLocale = (event: any, locale: string) => {
     event.preventDefault()
@@ -19,12 +19,12 @@ const Filter = () => {
     } else {
       locales.push(locale)
     }
-    updateState({ locales: locales })
+    updateFilters({ locales: locales })
   }
 
   const handleOnline = (event: any) => {
     event.preventDefault()
-    updateState({ online: !filters.online })
+    updateFilters({ online: !filters.online })
   }
 
   const handleReview = (event: any) => {
@@ -33,11 +33,11 @@ const Filter = () => {
     if (filters.reviewSort === 'asc') {
       reviewSort = 'desc'
     }
-    updateState({ reviewSort: reviewSort })
+    updateFilters({ reviewSort: reviewSort })
   }
   const handleRate = (event: any, rate: string) => {
     event.preventDefault()
-    updateState({ rate: rate })
+    updateFilters({ rate: rate })
   }
 
   return (

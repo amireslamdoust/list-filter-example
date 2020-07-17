@@ -1,13 +1,46 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { FilterContext } from '../../context/FilterContext'
 
+const createPagination = (currentPage: number) => {
+  const pages = []
+  if (currentPage < 4) {
+    for (let i = 1; i < currentPage + 3; i++) {
+      pages.push(i)
+    }
+  } else {
+    pages.push(1)
+    pages.push(2)
+    for (let i = currentPage; i < currentPage + 3; i++) {
+      pages.push(i)
+    }
+  }
+  return pages
+}
+
 const Pagination = () => {
-  const { filters, updateState, data } = useContext(FilterContext)
+  const { filters, updateFilters } = useContext(FilterContext)
+
+  const handleChangePage = (event: any, page: number) => {
+    event.preventDefault()
+    if (page < 1) {
+      return
+    }
+    updateFilters({ page: page })
+  }
+  const [pagination, setPagination] = useState(createPagination(filters.page))
+  useEffect(() => {
+    setPagination(createPagination(filters.page))
+  }, [filters.page])
 
   return (
     <nav className="mt-10 border-t border-gray-200 px-4 flex items-center justify-between sm:px-0">
       <div className="w-0 flex-1 flex">
-        <button className="-mt-px border-t-2 border-transparent pt-4 pr-1 inline-flex items-center text-sm leading-5 font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400 transition ease-in-out duration-150">
+        <button
+          onClick={(event) => {
+            handleChangePage(event, filters.page - 1)
+          }}
+          className="-mt-px border-t-2 border-transparent pt-4 pr-1 inline-flex items-center text-sm leading-5 font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400 transition ease-in-out duration-150"
+        >
           <svg className="mr-3 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
             <path
               fillRule="evenodd"
@@ -19,27 +52,31 @@ const Pagination = () => {
         </button>
       </div>
       <div className="hidden md:flex">
-        <button className="-mt-px border-t-2 border-transparent pt-4 px-4 inline-flex items-center text-sm leading-5 font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400 transition ease-in-out duration-150">
-          1
-        </button>
-        <button className="-mt-px border-t-2 border-indigo-500 pt-4 px-4 inline-flex items-center text-sm leading-5 font-medium text-indigo-600 focus:outline-none focus:text-indigo-800 focus:border-indigo-700 transition ease-in-out duration-150">
-          2
-        </button>
-        <button className="-mt-px border-t-2 border-transparent pt-4 px-4 inline-flex items-center text-sm leading-5 font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400 transition ease-in-out duration-150">
-          3
-        </button>
-        <button className="-mt-px border-t-2 border-transparent pt-4 px-4 inline-flex items-center text-sm leading-5 font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400 transition ease-in-out duration-150">
-          4
-        </button>
-        <button className="-mt-px border-t-2 border-transparent pt-4 px-4 inline-flex items-center text-sm leading-5 font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400 transition ease-in-out duration-150">
-          5
-        </button>
-        <span className="-mt-px border-t-2 border-transparent pt-4 px-4 inline-flex items-center text-sm leading-5 font-medium text-gray-500">
-          ...
-        </span>
+        {pagination.map((p) => {
+          return (
+            <button
+              key={p}
+              className={`-mt-px border-t-2 transition ease-in-out duration-150 focus:outline-none pt-4 px-4 inline-flex items-center text-sm leading-5 font-medium ${
+                filters.page === p
+                  ? 'border-indigo-500 text-indigo-600 focus:text-indigo-800 focus:border-indigo-700 '
+                  : 'border-transparent text-gray-500 focus:text-gray-700 focus:border-gray-400 hover:text-gray-700 hover:border-gray-300 '
+              }`}
+              onClick={(event) => {
+                handleChangePage(event, p)
+              }}
+            >
+              {p}
+            </button>
+          )
+        })}
       </div>
       <div className="w-0 flex-1 flex justify-end">
-        <button className="-mt-px border-t-2 border-transparent pt-4 pl-1 inline-flex items-center text-sm leading-5 font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400 transition ease-in-out duration-150">
+        <button
+          onClick={(event) => {
+            handleChangePage(event, filters.page + 1)
+          }}
+          className="-mt-px border-t-2 border-transparent pt-4 pl-1 inline-flex items-center text-sm leading-5 font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400 transition ease-in-out duration-150"
+        >
           Next
           <svg className="ml-3 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
             <path

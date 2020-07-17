@@ -3,7 +3,7 @@ import useLists from '../hooks/useLists'
 
 type ContextProps = {
   filters: any
-  updateState: any
+  updateFilters: any
   data: any
 }
 
@@ -14,21 +14,19 @@ type LayoutProps = {
 }
 
 const FilterProvider = ({ children }: LayoutProps) => {
+  const [query, setQuery] = useState('?')
+  const { data } = useLists(query)
   const [filters, setFilters] = useState({
     locales: [],
     online: false,
     reviewSort: 'asc',
     rate: 0,
-    page: 1,
+    page: data.currentPage,
   })
-
-  const updateState = (data: any) => {
+  const updateFilters = (data: any) => {
     const newFilter = { ...filters, ...data }
     setFilters(newFilter)
   }
-
-  const [query, setQuery] = useState('?')
-  const { data } = useLists(query)
 
   useEffect(() => {
     let q = '?'
@@ -58,7 +56,7 @@ const FilterProvider = ({ children }: LayoutProps) => {
       value={{
         filters,
         data,
-        updateState,
+        updateFilters,
       }}
     >
       {children}

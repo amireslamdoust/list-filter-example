@@ -5,16 +5,7 @@ const Header = () => {
   return (
     <div className="relative bg-white overflow-hidden">
       <div className="max-w-screen-xl mx-auto ">
-        <div className="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
-          <svg
-            className="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2"
-            fill="currentColor"
-            viewBox="0 0 100 100"
-            preserveAspectRatio="none"
-          >
-            <polygon points="50,0 100,0 50,100 0,100" />
-          </svg>
-
+        <div className="relative z-10 bg-white lg:max-w-2xl lg:w-full ">
           <div className="relative pt-6 px-4 sm:px-6 px-8">
             <nav className="relative flex items-center justify-between sm:h-10 lg:justify-start">
               <div className="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
@@ -38,29 +29,49 @@ const Header = () => {
               </div>
             </nav>
           </div>
-
-          <main className="mt-10 mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
-            <div className="sm:text-center lg:text-left">
-              <h2 className="text-4xl tracking-tight leading-10 font-extrabold text-gray-900 sm:text-5xl sm:leading-none md:text-6xl">
-                Data to enrich your
-                <br className="xl:hidden" />
-                <span className="text-indigo-600">online business</span>
+        </div>
+        <main className="mt-8 mx-auto max-w-screen-xl px-4 sm:px-6">
+          <div className="lg:grid lg:grid-cols-12 lg:gap-8">
+            <div className="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
+              <h2 className="mt-1 text-4xl tracking-tight leading-10 font-extrabold text-gray-900 sm:leading-none sm:text-6xl lg:text-5xl xl:text-6xl">
+                WE DEVELOP PRODUCTS THAT
+                <br className="hidden md:inline" />
+                <span className="text-indigo-600">CONNECT PEOPLE WITH PEOPLE</span>
               </h2>
-              <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                unknown printer took a galley of type and scrambled it to make a type specimen book.
+              <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
+                adviqo is a global media house and international market leader in the esoteric
+                marketplace segment. adviqo operates digital marketplaces for the monetization of
+                life coaching, astrology and psychic readings. We develop technical solutions that
+                enable people to connect with a reader, psychic or life coach on their phones or in
+                live chats.
               </p>
             </div>
-          </main>
-        </div>
-      </div>
-      <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-        <img
-          className="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"
-          src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80"
-          alt=""
-        />
+            <div className="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
+              <div className="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
+                <button
+                  type="button"
+                  className="relative block w-full rounded-lg overflow-hidden focus:outline-none focus:shadow-outline"
+                >
+                  <img
+                    className="w-full"
+                    src="https://adviqo.com/app/uploads/2019/04/adviqo-homepage-1-2.jpg"
+                    alt="LOLe"
+                  />
+                  <div className="absolute inset-0 w-full h-full flex items-center justify-center">
+                    <svg
+                      className="h-20 w-20 text-indigo-500"
+                      fill="currentColor"
+                      viewBox="0 0 84 84"
+                    >
+                      <circle opacity="0.9" cx="42" cy="42" r="42" fill="white" />
+                      <path d="M55.5039 40.3359L37.1094 28.0729C35.7803 27.1869 34 28.1396 34 29.737V54.263C34 55.8604 35.7803 56.8131 37.1094 55.9271L55.5038 43.6641C56.6913 42.8725 56.6913 41.1275 55.5039 40.3359Z" />
+                    </svg>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </main>
       </div>
     </div>
   )

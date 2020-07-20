@@ -57,6 +57,7 @@ const Filter = () => {
                   onClick={(event: any) => {
                     handleLocale(event, locale)
                   }}
+                  data-cy={`${locale}-checkbox`}
                   isActive={
                     filters.locales && Object.values(filters.locales).find((f) => f === locale)
                   }

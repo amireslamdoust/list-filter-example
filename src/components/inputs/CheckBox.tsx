@@ -12,9 +12,14 @@ const RadioBox = ({
   value = '',
   onClick = () => {},
   isActive = false,
+  ...rest
 }: CheckboxType) => {
   return (
-    <label className="flex-wrap flex relative pl-1 cursor-pointer text-base" onClick={onClick}>
+    <label
+      className="flex-wrap flex relative pl-1 cursor-pointer text-base"
+      onClick={onClick}
+      {...rest}
+    >
       <div className="mx-2">
         <input className="left-0 absolute opacity-0" type="radio" name={name} value={value} />
         <span

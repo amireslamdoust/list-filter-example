@@ -26,6 +26,7 @@ const GridList = () => {
                   {item.locale.map((locale: string) => {
                     return (
                       <div
+                        data-cy={`${locale}-locale`}
                         key={locale}
                         className="mx-4 my-1 inline-flex px-4 py-1 rounded-full text-sm leading-5 font-semibold tracking-wide uppercase bg-indigo-100 text-indigo-600"
                       >
